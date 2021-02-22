@@ -440,7 +440,14 @@ namespace Mapbox.Unity.Map
 			// Setup a visualizer to get a "Starter" map.
 			foreach (Transform tr in transform)
 			{
+#if UNITY_EDITOR
+				DestroyImmediate(tr.gameObject);
+
+#else
+				tr.parent = null;
 				Destroy(tr.gameObject);
+#endif
+
 			}
 
 			_mapVisualizer = ScriptableObject.CreateInstance<MapVisualizer>();
@@ -861,9 +868,9 @@ namespace Mapbox.Unity.Map
 			_tileProvider.UpdateTileExtent();
 		}
 
-		#endregion
+#endregion
 
-		#region Conversion and Height Query Methods
+#region Conversion and Height Query Methods
 		private Vector3 GeoToWorldPositionXZ(Vector2d latitudeLongitude)
 		{
 			// For quadtree implementation of the map, the map scale needs to be compensated for.
@@ -961,9 +968,9 @@ namespace Mapbox.Unity.Map
 			float height = QueryElevationAtInternal(latlong, out tileScale);
 			return (height / tileScale);
 		}
-		#endregion
+#endregion
 
-		#region Map Property Related Changes Methods
+#region Map Property Related Changes Methods
 		public virtual void SetCenterMercator(Vector2d centerMercator)
 		{
 			_centerMercator = centerMercator;
@@ -1063,9 +1070,9 @@ namespace Mapbox.Unity.Map
 			_options.scalingOptions.unityTileSize = tileSizeInUnityUnits;
 			_options.scalingOptions.HasChanged = true;
 		}
-		#endregion
+#endregion
 
-		#region Events
+#region Events
 		/// <summary>
 		/// Event delegate, gets called after map is initialized
 		/// <seealso cref="OnUpdated"/>
@@ -1078,6 +1085,6 @@ namespace Mapbox.Unity.Map
 		/// </summary>
 		public event Action OnUpdated = delegate { };
 		public event Action OnMapRedrawn = delegate { };
-		#endregion
+#endregion
 	}
 }

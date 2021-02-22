@@ -1,7 +1,12 @@
 ﻿using UnityEngine;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.Experimental.XR;
 using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR;
+using UnityEngine.XR.ARSubsystems;
+
 namespace UnityARInterface
 {
 	public class ARPlaneHandler : MonoBehaviour
@@ -17,6 +22,30 @@ namespace UnityARInterface
 		void Awake()
 		{
 			_arPlaneManager = GetComponent<ARPlaneManager>();
+			_arPlaneManager.planesChanged += (ev) =>
+			{
+				List<ARPlane> addedPlanes = ev.added;
+				if (addedPlanes.Count > 0)
+				{
+					foreach (ARPlane plane in addedPlanes)
+					{
+						GameObject instance = Instantiate(spawnObject, plane.center, plane.transform.rotation);
+						spawnObjects.Add(plane.trackableId, instance);
+					}
+				}
+
+				List<ARPlane> removedPlanes = obj.removed;
+
+				if (removedPlanes.Count > 0)
+				{
+					foreach (ARPlane plane in removedPlanes)
+					{
+						GameObject destoryTarget = spawnObjects[plane.trackableId];
+						Destroy(destoryTarget);
+					}
+				}
+
+			};
 			_arPlaneManager.planeAdded += OnPlaneAdded;
 			_arPlaneManager.planeUpdated += OnPlaneUpdated;
 		}

@@ -30,7 +30,7 @@ public class PlaceMapOnARPlane : MonoBehaviour
 				Debug.Log("ActiveSelf failed");
 			}
 
-			_mapTransform.position = plane.boundedPlane.Center;
+			//_mapTransform.position = plane.boundedPlane.Center;
 			Debug.Log("Updating Map Position");
 		}
 		catch (Exception e)

@@ -18,13 +18,13 @@ public class UpdateShaderCoordinatesByARPlane : MonoBehaviour
 	void Start()
 	{
 		_arPlane.boundaryChanged += CheckCoordinates;
-		_arPlane.removed += ResetShaderValues;
+		//_arPlane.removed += ResetShaderValues;
 	}
 
 	void CheckCoordinates(ARPlaneBoundaryChangedEventArgs plane)
 	{
 
-		_position = plane.center;
+		//_position = plane.center;
 		//_rotation = Quaternion.Inverse(plane.otation);
 		//_localScale = new Vector3(plane.convexBoundary, 10, plane.convexBoundary[1]);
 

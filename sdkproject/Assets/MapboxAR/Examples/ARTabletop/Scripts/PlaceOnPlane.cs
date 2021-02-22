@@ -39,19 +39,19 @@ public class PlaceOnPlane : MonoBehaviour
 		{
 			Touch touch = Input.GetTouch(0);
 
-			if (m_SessionOrigin.Raycast(touch.position, s_Hits, TrackableType.PlaneWithinPolygon))
-			{
-				Pose hitPose = s_Hits[0].pose;
+			//if (m_SessionOrigin.Raycast(touch.position, s_Hits, TrackableType.PlaneWithinPolygon))
+			//{
+			//	Pose hitPose = s_Hits[0].pose;
 
-				if (spawnedObject == null)
-				{
-					spawnedObject = Instantiate(m_PlacedPrefab, hitPose.position, hitPose.rotation);
-				}
-				else
-				{
-					spawnedObject.transform.position = hitPose.position;
-				}
-			}
+			//	if (spawnedObject == null)
+			//	{
+			//		spawnedObject = Instantiate(m_PlacedPrefab, hitPose.position, hitPose.rotation);
+			//	}
+			//	else
+			//	{
+			//		spawnedObject.transform.position = hitPose.position;
+			//	}
+			//}
 		}
 	}
 }

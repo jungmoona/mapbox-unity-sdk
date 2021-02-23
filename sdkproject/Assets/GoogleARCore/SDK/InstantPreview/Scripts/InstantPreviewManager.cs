@@ -29,7 +29,7 @@ namespace GoogleARCoreInternal
     using GoogleARCore;
     using UnityEngine;
     using UnityEngine.Rendering;
-    using UnityEngine.SpatialTracking;
+    //using UnityEngine.SpatialTracking;
 
     /// <summary>
     /// Contains methods for managing communication to the Instant Preview 
@@ -198,17 +198,17 @@ namespace GoogleARCoreInternal
 
         private static void AddInstantPreviewTrackedPoseDriverWhenNeeded()
         {
-            foreach (var poseDriver in Component.FindObjectsOfType<TrackedPoseDriver>())
-            {
-                poseDriver.enabled = false;
-                var gameObject = poseDriver.gameObject;
-                var hasInstantPreviewTrackedPoseDriver =
-                    gameObject.GetComponent<InstantPreviewTrackedPoseDriver>() != null;
-                if (!hasInstantPreviewTrackedPoseDriver)
-                {
-                    gameObject.AddComponent<InstantPreviewTrackedPoseDriver>();
-                }
-            }
+            //foreach (var poseDriver in Component.FindObjectsOfType<TrackedPoseDriver>())
+            //{
+            //    poseDriver.enabled = false;
+            //    var gameObject = poseDriver.gameObject;
+            //    var hasInstantPreviewTrackedPoseDriver =
+            //        gameObject.GetComponent<InstantPreviewTrackedPoseDriver>() != null;
+            //    if (!hasInstantPreviewTrackedPoseDriver)
+            //    {
+            //        gameObject.AddComponent<InstantPreviewTrackedPoseDriver>();
+            //    }
+            //}
         }
 
         private static string GetAdbPath()

@@ -1294,7 +1294,7 @@ MonoBehaviour:
   - 37.2802361353992,127.113634578741
   - 37.28024564305252, 127.1121017828409
   _spawnScale: 2
-  _markerPrefab: {fileID: 4950502608548384245, guid: d9f2c8fabc213a14783f4d7a782caadf,
+  _markerPrefab: {fileID: 4493914613880827488, guid: 6dc4cf4496348884d8ee27743ae38562,
     type: 3}
 --- !u!114 &512060649
 MonoBehaviour:

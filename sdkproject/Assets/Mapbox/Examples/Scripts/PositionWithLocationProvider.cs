@@ -81,6 +81,9 @@ namespace Mapbox.Examples
 		void Update()
 		{
 			transform.localPosition = Vector3.Lerp(transform.localPosition, _targetPosition, Time.deltaTime * _positionFollowFactor);
+
+			//by lwsoft
+			transform.localRotation = Quaternion.Euler(0f, Camera.main.transform.eulerAngles.y, 0f);
 		}
 	}
 }

@@ -59,7 +59,7 @@ namespace Mapbox.Unity.Utilities
 
 			if (!double.TryParse(latLonSplit[1], NumberStyles.Any, NumberFormatInfo.InvariantInfo, out longitude))
 			{
-				throw new Exception(string.Format("Could not convert longitude to double: {0}", latLonSplit[0]));
+				throw new Exception(string.Format("Could not convert longitude to double: {0}", latLonSplit[1]));
 			}
 
 			return new Vector2d(latitude, longitude);

@@ -6,6 +6,11 @@ using UnityEngine.Networking.PlayerConnection;
 using UnityEditor.Networking.PlayerConnection;
 #endif
 
+//add by lwsoft
+using Mapbox.Unity.Location;
+using Mapbox.Utils;
+using Mapbox.Unity.Map;
+
 namespace UnityARInterface
 {
     public class ARController : MonoBehaviour
@@ -99,6 +104,8 @@ namespace UnityARInterface
             }
         }
 
+        public AbstractMap abstractMap;
+        public float offsetY = 0.5f;//0.5m
         void OnBeforeRender()
         {
             m_ARInterface.UpdateCamera(m_ARCamera);
@@ -106,6 +113,11 @@ namespace UnityARInterface
             Pose pose = new Pose();
             if (m_ARInterface.TryGetPose(ref pose))
             {
+                //add by lwsoft
+                AbstractLocationProvider _locationProvider = LocationProviderFactory.Instance.DefaultLocationProvider as AbstractLocationProvider;
+                var elevationPos = abstractMap.GeoToWorldPosition(_locationProvider.CurrentLocation.LatitudeLongitude,true);
+                pose.position.y += elevationPos.y+offsetY;
+
                 m_ARCamera.transform.localPosition = pose.position;
                 m_ARCamera.transform.localRotation = pose.rotation;
                 var parent = m_ARCamera.transform.parent;

@@ -113,6 +113,7 @@ namespace UnityARInterface
             {
 #if UNITY_EDITOR
                 m_Interface = new AREditorInterface();
+                ((AREditorInterface)m_Interface).speedMultiply = 10f;
 #elif UNITY_IOS
                 m_Interface = new ARKitInterface();
 #elif UNITY_ANDROID
